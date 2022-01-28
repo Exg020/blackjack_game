@@ -46,7 +46,6 @@ window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('stand-button').disabled = true;
       determineWinner();
     }
-    console.log(startingDeck.length)
     document.getElementById('deal-button').disabled = true
   }
 
@@ -68,12 +67,14 @@ window.addEventListener('DOMContentLoaded', function() {
       calculatePlayerPoints();
       if(playerScore > 21) {
         document.getElementById('hit-button').disabled = true
+        document.getElementById('stand-button').disabled = true
         calculatePlayerPoints();
         calculateDealer();
         alertBust()
       }
     } else {
       document.getElementById('hit-button').disabled = true
+      document.getElementById('stand-button').disabled = true
       calculatePlayerPoints();
       alertBust()
     }
@@ -123,7 +124,7 @@ window.addEventListener('DOMContentLoaded', function() {
         playerScore += parseInt(playerHand[index].rank, 10);
       }
     }
-    document.getElementById('player-points').append(`${playerScore}`);
+    document.getElementById('player-points').innerHTML = (`${playerScore}`);
   }
 
   function calculateDealer() {
@@ -139,7 +140,7 @@ window.addEventListener('DOMContentLoaded', function() {
         dealerScore += parseInt(dealerHand[index].rank, 10);
       }
     }
-    document.getElementById('dealer-points').append(`${dealerScore}`);
+    document.getElementById('dealer-points').innerHTML = (`${dealerScore}`);
   }
 
   function playerStand() {
@@ -162,7 +163,6 @@ window.addEventListener('DOMContentLoaded', function() {
         }
       }
     }
-
   }
 
   function determineWinner() {
@@ -184,8 +184,13 @@ window.addEventListener('DOMContentLoaded', function() {
      playerScore = 0;
      dealerScore = 0;
      document.getElementById('deal-button').disabled = false
-     document.getElementById('player-hand').innerHTML('');
-     document.getElementById('dealer-hand').innerHTML('');
+     document.getElementById('player-hand').innerHTML = '';
+     document.getElementById('dealer-hand').innerHTML = '';
+     document.getElementById('messages').innerHTML = ('');
+     document.getElementById('player-points').innerHTML = '0';
+     document.getElementById('dealer-points').innerHTML = '0';
+     createDeck();
+     shuffleDeck();
 
   }
   
