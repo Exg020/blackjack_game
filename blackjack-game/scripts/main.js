@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   function getCardImage(card) {
-    const tempImage = "/images/" + card.rank +"_of_" + card.suits + ".png";
+    const tempImage = "./images/" + card.rank +"_of_" + card.suits + ".png";
     const newCardImage = document.createElement('img');
     newCardImage.src = tempImage;
     return newCardImage;
@@ -191,7 +191,6 @@ window.addEventListener('DOMContentLoaded', function() {
      document.getElementById('dealer-points').innerHTML = '0';
      createDeck();
      shuffleDeck();
-
   }
   
 });
